@@ -29,12 +29,17 @@ public class PlayerActionListener implements Listener {
         if(player == null || !player.isBeingChecked()) return;
 
         e.setCancelled(true);
+
+        String chatMessage = ScreenSharePlugin.getPluginInstance().getPluginConfiguration().MESSAGE_CHECKED_FORMAT
+                .replace("{PLAYER}", e.getPlayer().getName())
+                .replace("{MESSAGE}", e.getMessage());
+
         for(Player p: Bukkit.getOnlinePlayers()) {
-            if (!p.hasPermission("screenshare.check") || !player.getName().equals(p.getName())) continue;
-            p.sendMessage(ScreenSharePlugin.getPluginInstance().getPluginConfiguration().MESSAGE_CHECKED_FORMAT
-            .replace("{PLAYER}", e.getPlayer().getName())
-            .replace("{MESSAGE}", e.getMessage()));
+            if (!p.hasPermission("screenshare.check")) continue;
+            p.sendMessage(chatMessage);
         }
+
+        e.getPlayer().sendMessage(chatMessage);
     }
 
     @EventHandler
