@@ -1,5 +1,5 @@
 # MemeScreenShare
-Doyebany plugin na sprawdzanie.
+Doyebany plugin na sprawdzanie.  
 pls wysyłajcie pullrequesty jak są jakieś bugi, albo je przynajmniej dodajcie w zakładce [/issues](https://github.com/Nemerux/MemeScreenShare/issues)
 
 ## Pobieranie
