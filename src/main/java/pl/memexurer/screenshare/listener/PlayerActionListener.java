@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import pl.memexurer.screenshare.ScreenSharePlugin;
 import pl.memexurer.screenshare.data.CheckedPlayer;
 
@@ -34,5 +35,13 @@ public class PlayerActionListener implements Listener {
             .replace("{PLAYER}", e.getPlayer().getName())
             .replace("{MESSAGE}", e.getMessage()));
         }
+    }
+
+    @EventHandler
+    public void logoutHandler(PlayerQuitEvent e) {
+        CheckedPlayer player = ScreenSharePlugin.getPluginInstance().getCheckedPlayerData().getPlayer(e.getPlayer());
+        if (player == null || !player.isBeingChecked()) return;
+
+        player.banLogout();
     }
 }
