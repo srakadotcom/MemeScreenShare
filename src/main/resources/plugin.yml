@@ -1,0 +1,19 @@
+name: MemeScreenShare
+version: ${project.version}
+main: pl.memexurer.screenshare.ScreenSharePlugin
+api-version: 1.8
+authors: [Memexurer]
+description: Doyebany minecraft plugin for screensharing players.
+commands:
+  check:
+    description: Komenda do sprawdzania graczy.
+    usage: /check (sprawdz/czysty/cheater) (nick)
+    aliases: [sprawdz]
+  acknowledge:
+    description: Komenda dla graczy, do przyznawanie sie do cheatow.
+    usage: /acknowledge
+    aliases: [przyznajesie, przyznajsie, przyznaje, przyznaj]
+  setcheck:
+    description: Komenda do ustawiania miejsca sprawdzania graczy
+    usage: /setcheck
+    aliases: [setcheck, setsprawdz, ustawsprawdzanie]

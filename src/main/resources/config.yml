@@ -1,0 +1,49 @@
+## MemeScreenShare - doyebany minecraft plugin for screensharing players.
+# Permisja wymagana do sprawdzania graczy - screenshare.check
+# Ustawianie pokoju do sprawdzania - screenshare.setcheck
+ban:
+  format: "tempban {PLAYER} {TIME} {REASON}" # Komenda uzywana przez plugin do banowania ludzi.
+  logout:
+    time: 30d # wklejane zamiast {TIME} w formatcie banow
+    reason: "Logout podczas sprawdzania" # wklejane zamiast {REASON} w formatcie banow
+  found:
+    time: 15d
+    reason: "Wykryto cheaty"
+  acknowledgment:
+    time: 3d
+    reason: "Przyznanie sie do cheatow"
+  delay: 20 # Po ilu sekundach gracz ma zostac zbanowany?
+
+check:
+  allowed_commands: # dozwolone komendy podczas sprawdzania
+    - "helpop"
+
+messages:
+  checked_message_format:
+    - "&8[&9SPRAWDZANY&8] &7{PLAYER}: {MESSAGE}" # format wiadomosci wysylanych przez gracza, kiedy gracz jest sprawdzany
+  command_not_allowed: # wiadomosc wysylana kiedy komenda nie bedzie dozwolona podczas sprawdzania
+  - "&c&lHey! &7Ta komenda nie jest dozwolona podczas sprawdzania"
+  checking:
+    message:
+      - "heja jestes podejrzany o posiadanie środkuw dopingujoncyh (czity), zaraz cie tu admin sprawdzi i sobie juz nie pograsz" # zmień to...
+    broadcast:
+      - "cheater o nicku {PLAYER} jest podejrzany o posiadanie środków dopingujących"
+  checked:
+    cheater: # wiadomosc wysylana do gracza kiedy jest brudny
+      message:
+        - "o ty, jestes czeterem. masz 20 sekund na pozegnanie sie z serwerem"
+      broadcast:
+        - "cheater o nicku {PLAYER} byl cheaterem!"
+    legit:  # kiedy gracz jest czysty
+      message:
+        - "ooo jestes kozak nie masz cheatow"
+      broadcast:
+        - "cheater o nicku {PLAYER} jednak nie mial cheatow!"
+    acknowledgment:
+      message:
+        - "przyznales sie do cheatow jestes kozak"
+      broadcast:
+        - "gracz {PLAYER} przyznal sie do cheatow"
+    logout: "Gracz {PLAYER} wylogowal sie podczas sprawdzania!" # wylogowanie podczas sprawdzania
+
+
