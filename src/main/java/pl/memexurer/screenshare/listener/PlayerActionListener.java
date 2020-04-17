@@ -3,6 +3,7 @@ package pl.memexurer.screenshare.listener;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -23,23 +24,21 @@ public class PlayerActionListener implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
     public void chatMessageHandler(AsyncPlayerChatEvent e) {
         CheckedPlayer player = ScreenSharePlugin.getPluginInstance().getCheckedPlayerData().getPlayer(e.getPlayer());
         if(player == null || !player.isBeingChecked()) return;
-
-        e.setCancelled(true);
 
         String chatMessage = ScreenSharePlugin.getPluginInstance().getPluginConfiguration().MESSAGE_CHECKED_FORMAT
                 .replace("{PLAYER}", e.getPlayer().getName())
                 .replace("{MESSAGE}", e.getMessage());
 
         for(Player p: Bukkit.getOnlinePlayers()) {
-            if (!p.hasPermission("screenshare.check")) continue;
+            if (!p.hasPermission("screenshare.check") && !p.equals(e.getPlayer())) continue;
             p.sendMessage(chatMessage);
         }
 
-        e.getPlayer().sendMessage(chatMessage);
+        e.setCancelled(true);
     }
 
     @EventHandler

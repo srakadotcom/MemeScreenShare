@@ -38,6 +38,17 @@ public class CheckedPlayer {
         Bukkit.broadcastMessage(ScreenSharePlugin.getPluginInstance().getPluginConfiguration().MESSAGE_BROADCAST_CHECK.replace("{PLAYER}", name));
     }
 
+    public void checkPlayer() {
+        Player checkedPlayer = getPlayer();
+
+        this.previousLocation = checkedPlayer.getLocation();
+        this.checkedBy = "Console";
+        if (ScreenSharePlugin.getPluginInstance().getPluginDataConfiguration().CHECK_LOCATION != null)
+            checkedPlayer.teleport(ScreenSharePlugin.getPluginInstance().getPluginDataConfiguration().CHECK_LOCATION);
+        checkedPlayer.sendMessage(ScreenSharePlugin.getPluginInstance().getPluginConfiguration().MESSAGE_CHECKING);
+        Bukkit.broadcastMessage(ScreenSharePlugin.getPluginInstance().getPluginConfiguration().MESSAGE_BROADCAST_CHECK.replace("{PLAYER}", name));
+    }
+
     public void legit() {
         this.checkedBy = null;
 

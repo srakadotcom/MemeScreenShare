@@ -10,7 +10,7 @@ public class SprawdzSubCommand implements CheckSubCommand {
     public void execute(CommandSender sender, CheckedPlayer player) {
         if(!(sender instanceof Player)) {
             sendMessage(sender, "&4Blad: &7Ta komenda jest dostepna tylko dla graczy.");
-            return;
+            // return;
         }
 
         if(player.getPlayer().hasPermission("screenshare.check")) {
@@ -23,6 +23,8 @@ public class SprawdzSubCommand implements CheckSubCommand {
             return;
         }
 
-        player.checkPlayer((Player) sender);
+        if (!(sender instanceof Player)) {
+            player.checkPlayer();
+        } else player.checkPlayer((Player) sender);
     }
 }
