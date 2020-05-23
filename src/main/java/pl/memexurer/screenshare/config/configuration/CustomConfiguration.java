@@ -1,6 +1,5 @@
 package pl.memexurer.screenshare.config.configuration;
 
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -18,8 +17,9 @@ public class CustomConfiguration {
     public CustomConfiguration(JavaPlugin plugin, String fileName) {
         this.file = new File(plugin.getDataFolder(), fileName);
         if (!file.exists()) {
-            if(plugin.getResource(fileName) == null) {
+            if (plugin.getResource(fileName) == null) {
                 try {
+                    file.mkdirs();
                     file.createNewFile();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -31,8 +31,8 @@ public class CustomConfiguration {
 
     public CustomConfiguration(JavaPlugin plugin) {
         this.file = new File(plugin.getDataFolder(), "config.yml");
-        if (!file.exists())
-            plugin.saveResource("config.yml", false);
+        //   if (!file.exists()) co z tym? halo halo czemu to nie działa?
+        plugin.saveResource("config.yml", false);
         this.configuration = plugin.getConfig();
     }
 
@@ -69,7 +69,7 @@ public class CustomConfiguration {
                 if (source.valueType() == ConfigValueType.DEFAULT)
                     configuration.set(source.path(), f.get(this));
                 else
-                    configuration.set(source.path(), source.valueType().stringify(f.get(this)));
+                    configuration.set(source.path(), source.valueType().convert(f.get(this)));
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }

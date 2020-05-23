@@ -13,7 +13,7 @@ public class LocationParser implements ConfigValueParser<String, Location> {
     }
 
     @Override
-    public String stringify(Location obj) {
+    public String convert(Location obj) {
         return obj.getWorld().getName() + "," + obj.getBlockX() + "," + obj.getBlockY() + "," + obj.getBlockZ();
     }
 }

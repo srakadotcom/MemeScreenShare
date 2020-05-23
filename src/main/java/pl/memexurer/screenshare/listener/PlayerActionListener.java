@@ -13,7 +13,7 @@ import pl.memexurer.screenshare.data.CheckedPlayer;
 
 public class PlayerActionListener implements Listener {
     @EventHandler
-    public void commandDisablerHandler(PlayerCommandPreprocessEvent e) {
+    public void onCommand(PlayerCommandPreprocessEvent e) {
         CheckedPlayer player = ScreenSharePlugin.getPluginInstance().getCheckedPlayerData().getPlayer(e.getPlayer());
         if(player == null || !player.isBeingChecked()) return;
 
@@ -25,7 +25,7 @@ public class PlayerActionListener implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
-    public void chatMessageHandler(AsyncPlayerChatEvent e) {
+    public void onChat(AsyncPlayerChatEvent e) {
         CheckedPlayer player = ScreenSharePlugin.getPluginInstance().getCheckedPlayerData().getPlayer(e.getPlayer());
         if(player == null || !player.isBeingChecked()) return;
 
@@ -42,7 +42,7 @@ public class PlayerActionListener implements Listener {
     }
 
     @EventHandler
-    public void logoutHandler(PlayerQuitEvent e) {
+    public void onPlayerLogout(PlayerQuitEvent e) {
         CheckedPlayer player = ScreenSharePlugin.getPluginInstance().getCheckedPlayerData().getPlayer(e.getPlayer());
         if (player == null || !player.isBeingChecked()) return;
 

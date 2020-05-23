@@ -3,15 +3,19 @@ package pl.memexurer.screenshare.config.parser.impl;
 import pl.memexurer.screenshare.config.parser.ConfigValueParser;
 import pl.memexurer.screenshare.util.ChatUtil;
 
-public class ColoredStringParser implements ConfigValueParser<String, String> {
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class ColoredStringParser implements ConfigValueParser<List<String>, String> {
+
     @Override
-    public String parse(String obj) {
-        if (obj == null) return null;
-        return ChatUtil.fixColor(obj);
+    public String parse(List<String> value) {
+        return value.stream().map(ChatUtil::fixColor).collect(Collectors.joining("\n"));
     }
 
     @Override
-    public String stringify(String object) {
-        return object.replace("\u00A7", "&");
+    public List<String> convert(String object) {
+        return Arrays.stream(object.split("\n")).map(str -> str.replace('\u00A7', '&')).collect(Collectors.toList());
     }
 }

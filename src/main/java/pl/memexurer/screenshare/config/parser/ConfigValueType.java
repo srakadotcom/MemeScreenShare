@@ -18,7 +18,7 @@ public enum ConfigValueType {
         return parser.parse(val);
     }
 
-    public Object stringify(Object obj) {
-        return parser.stringify(obj);
+    public Object convert(Object obj) {
+        return parser.convert(obj);
     }
 }

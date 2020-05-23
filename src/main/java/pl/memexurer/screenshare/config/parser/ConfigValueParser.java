@@ -3,5 +3,5 @@ package pl.memexurer.screenshare.config.parser;
 public interface ConfigValueParser<K, T> {
     T parse(K value);
 
-    K stringify(T object);
+    K convert(T object);
 }
