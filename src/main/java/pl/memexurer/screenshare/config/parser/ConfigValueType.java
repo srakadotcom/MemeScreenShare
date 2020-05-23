@@ -1,20 +1,17 @@
 package pl.memexurer.screenshare.config.parser;
 
-import pl.memexurer.screenshare.config.parser.impl.ColoredStringValueParser;
-import pl.memexurer.screenshare.config.parser.impl.LocationValueParser;
+import pl.memexurer.screenshare.config.parser.impl.ColoredStringParser;
+import pl.memexurer.screenshare.config.parser.impl.LocationParser;
 
 public enum ConfigValueType {
-    DEFAULT(),
-    LOCATION(new LocationValueParser()),
-    COLORED_STRING(new ColoredStringValueParser());
+    DEFAULT(null),
+    LOCATION(new LocationParser()),
+    COLORED_STRING(new ColoredStringParser());
 
     private ConfigValueParser parser;
 
     ConfigValueType(ConfigValueParser parser) {
         this.parser = parser;
-    }
-
-    ConfigValueType() {
     }
 
     public Object parse(Object val) {
