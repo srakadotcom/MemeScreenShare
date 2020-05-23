@@ -1,12 +1,12 @@
 package pl.memexurer.screenshare.config.parser;
 
-import pl.memexurer.screenshare.config.parser.impl.ColoredStringParser;
+import pl.memexurer.screenshare.config.parser.impl.ColoredListStringParser;
 import pl.memexurer.screenshare.config.parser.impl.LocationParser;
 
 public enum ConfigValueType {
     DEFAULT(null),
     LOCATION(new LocationParser()),
-    COLORED_STRING(new ColoredStringParser());
+    COLORED_STRING(new ColoredListStringParser());
 
     private ConfigValueParser parser;
 

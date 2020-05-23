@@ -22,7 +22,7 @@ messages:
   checked_message_format:
     - "&8[&9SPRAWDZANY&8] &7{PLAYER}: {MESSAGE}" # format wiadomosci wysylanych przez gracza, kiedy gracz jest sprawdzany
   command_not_allowed: # wiadomosc wysylana kiedy komenda nie bedzie dozwolona podczas sprawdzania
-  - "&c&lHey! &7Ta komenda nie jest dozwolona podczas sprawdzania"
+    - "&c&lHey! &7Ta komenda nie jest dozwolona podczas sprawdzania"
   checking:
     message:
       - "heja jestes podejrzany o posiadanie środkuw dopingujoncyh (czity), zaraz cie tu admin sprawdzi i sobie juz nie pograsz" # zmień to...
@@ -44,6 +44,7 @@ messages:
         - "przyznales sie do cheatow jestes kozak"
       broadcast:
         - "gracz {PLAYER} przyznal sie do cheatow"
-    logout: "Gracz {PLAYER} wylogowal sie podczas sprawdzania!" # wylogowanie podczas sprawdzania
+    logout:
+      - "Gracz {PLAYER} wylogowal sie podczas sprawdzania!" # wylogowanie podczas sprawdzania
 
 

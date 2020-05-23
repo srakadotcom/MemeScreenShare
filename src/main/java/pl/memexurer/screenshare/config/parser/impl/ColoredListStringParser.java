@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ColoredStringParser implements ConfigValueParser<List<String>, String> {
+public class ColoredListStringParser implements ConfigValueParser<List<String>, String> {
 
     @Override
     public String parse(List<String> value) {
