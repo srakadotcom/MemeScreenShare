@@ -19,7 +19,7 @@ public class CustomConfiguration {
         if (!file.exists()) {
             if (plugin.getResource(fileName) == null) {
                 try {
-                    file.mkdirs();
+                    file.getParentFile().mkdir();
                     file.createNewFile();
                 } catch (IOException e) {
                     e.printStackTrace();
