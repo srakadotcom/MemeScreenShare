@@ -100,7 +100,8 @@ public class CheckedPlayer {
     }
 
     private void banPlayer(String time, String reason) {
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), ScreenSharePlugin.getPluginInstance().getPluginConfiguration().BAN_FORMAT
+        String format = time.equalsIgnoreCase("PERM") ? ScreenSharePlugin.getPluginInstance().getPluginConfiguration().BAN_FORMAT_PERM : ScreenSharePlugin.getPluginInstance().getPluginConfiguration().BAN_FORMAT_TEMP;
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), format
                 .replace("{PLAYER}", name)
                 .replace("{TIME}", time)
                 .replace("{REASON}", reason)); //TODO: dodać message formattera

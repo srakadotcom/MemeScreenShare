@@ -12,8 +12,11 @@ public class PluginConfiguration extends CustomConfiguration {
         super(plugin);
     }
 
-    @ConfigurationSource(path = "ban.format")
-    public String BAN_FORMAT;
+    @ConfigurationSource(path = "ban.format_temp")
+    public String BAN_FORMAT_TEMP;
+
+    @ConfigurationSource(path = "ban.format_perm")
+    public String BAN_FORMAT_PERM;
 
     @ConfigurationSource(path = "ban.logout.time")
     public String BAN_TIME_LOGOUT;

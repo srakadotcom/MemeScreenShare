@@ -2,9 +2,10 @@
 # Permisja wymagana do sprawdzania graczy - screenshare.check
 # Ustawianie pokoju do sprawdzania - screenshare.setcheck
 ban:
-  format: "tempban {PLAYER} {TIME} {REASON}" # Komenda uzywana przez plugin do banowania ludzi.
+  format_temp: "tempban {PLAYER} {TIME} {REASON}" # Komenda uzywana przez plugin do banowania ludzi.
+  format_perm: "ban {PLAYER} {REASON}" # Komenda uzywana przez plugin do banowania permamentnie ludzi. (logout)
   logout:
-    time: 30d # wklejane zamiast {TIME} w formatcie banow
+    time: PERM # wklejane zamiast {TIME} w formatcie banow
     reason: "Logout podczas sprawdzania" # wklejane zamiast {REASON} w formatcie banow
   found:
     time: 15d
